@@ -49,7 +49,10 @@ const SignInForm = () => {
                 </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+                style={styles.button}
+                onPress={() => router.replace('/welcome')}
+            >
                 <Text style={styles.buttonText}>Ihr Konto anmelden</Text>
             </TouchableOpacity>
 
