@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '@/utils/firebaseConfig'
 import {
     View,
     Text,
@@ -13,6 +15,15 @@ const SignInForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [remember, setRemember] = useState(false)
+
+    const handleLogin = async () => {
+        try {
+            await signInWithEmailAndPassword(auth, email, password)
+            router.replace('/welcome')
+        } catch (error: any) {
+            alert('Fehler beim Einloggen: ' + error.message)
+        }
+    }
 
     return (
         <View>
@@ -51,7 +62,8 @@ const SignInForm = () => {
 
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => router.replace('/welcome')}
+                // onPress={() => router.replace('/welcome')}
+                onPress={handleLogin}
             >
                 <Text style={styles.buttonText}>Ihr Konto anmelden</Text>
             </TouchableOpacity>

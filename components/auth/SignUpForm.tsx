@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '@/utils/firebaseConfig'
 import {
     View,
     Text,
@@ -15,6 +17,15 @@ const SignUpForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+
+    const handleSignUp = async () => {
+        try {
+            await createUserWithEmailAndPassword(auth, email, password)
+            router.replace('/welcome')
+        } catch (error: any) {
+            alert('Fehler beim Registrieren: ' + error.message)
+        }
+    }
 
     return (
         <View>
@@ -52,7 +63,10 @@ const SignUpForm = () => {
                 secureTextEntry
             />
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+                style={styles.button}
+                onPress={handleSignUp}
+            >
                 <Text style={styles.buttonText}>Konto erstellen</Text>
             </TouchableOpacity>
 
