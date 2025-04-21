@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "AtemFlow",
-    "slug": "AtemFlow",
+    "name": "medskills-app",
+    "slug": "medskills-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -9,9 +9,11 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.medskills.app"
     },
     "android": {
+      "package": "com.medskills.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -36,6 +38,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "48caa8af-c60d-4b60-87d8-c5335e506352"
+      }
     }
   }
 }
